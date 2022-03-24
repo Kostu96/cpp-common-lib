@@ -8,13 +8,16 @@ bool readFile(const char* filename, char* data, size_t& size, bool binary)
     if (!fin.is_open())
         return false;
 
+    bool retVal;
     if (data) {
-        return (bool)fin.read(data, size);
+        retVal = (bool)fin.read(data, size);
     }
     else {
         fin.ignore(std::numeric_limits<std::streamsize>::max());
-        size = fin.gcount();
-        fin.close();
-        return true;
+        retVal = true;
     }
+
+    size = fin.gcount();
+    fin.close();
+    return true;
 }
