@@ -1,3 +1,9 @@
+#
+# Copyright (C) 2022 Konstanty Misiak
+#
+# SPDX-License-Identifier: MIT
+#
+
 cmake_minimum_required(VERSION 3.20)
 
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
