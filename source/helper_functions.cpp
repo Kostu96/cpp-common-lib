@@ -12,7 +12,7 @@ namespace ccl {
 
     bool readFile(const char* filename, char* data, size_t& size, bool binary)
     {
-        std::ifstream fin(filename, binary ? std::ios::binary : 1);
+        std::ifstream fin(filename, binary ? std::ios::binary : std::ios::in);
         if (!fin.is_open())
             return false;
 

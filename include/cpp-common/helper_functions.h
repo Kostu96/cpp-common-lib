@@ -5,6 +5,7 @@
  */
 
 #pragma once
+#include <stddef>
 
 namespace ccl {
 
