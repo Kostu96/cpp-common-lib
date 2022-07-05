@@ -30,4 +30,16 @@ namespace ccl {
         return true;
     }
 
+    bool writeFile(const char* filename, const char* data, size_t size, bool binary)
+    {
+        std::ofstream fout(filename, binary ? std::ios::binary : std::ios::out);
+        if (!fout.is_open())
+            return false;
+
+        bool retVal = (bool)fout.write(data, size);
+
+        fout.close();
+        return retVal;
+    }
+
 } // namespace ccl
