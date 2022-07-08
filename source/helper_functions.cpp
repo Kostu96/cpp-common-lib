@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: MIT
  */
 
-#include "cpp-common/helper_functions.h"
+#include "ccl/helper_functions.h"
 
 #include <fstream>
 

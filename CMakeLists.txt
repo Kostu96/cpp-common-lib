@@ -6,6 +6,10 @@
 
 cmake_minimum_required(VERSION 3.20)
 
+### options: ###
+option(CCL_BUILD_TESTS "Build tests" OFF)
+################
+
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -35,20 +39,28 @@ endfunction()
 assure_out_of_source_builds()
 
 project(cpp-common-lib-proj LANGUAGES CXX)
-set(TARGET_NAME cpp-common-lib)
+set(LIB_TARGET_NAME cpp-common-lib)
 
 set(SOURCE_FILES
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/cpp-common/helper_functions.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/cpp-common/non_copyable.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/ccl/helper_functions.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/ccl/md5.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/ccl/non_copyable.h
     ${CMAKE_CURRENT_SOURCE_DIR}/source/helper_functions.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/source/md5.cpp
 )
 
-add_library(${TARGET_NAME} STATIC
+add_library(${LIB_TARGET_NAME} STATIC
 	${SOURCE_FILES}
 )
 
 source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR} FILES ${SOURCE_FILES})
 
-target_include_directories(${TARGET_NAME} PUBLIC
+target_include_directories(${LIB_TARGET_NAME} SYSTEM PUBLIC
 	${CMAKE_CURRENT_SOURCE_DIR}/include
 )
+
+add_subdirectory(third_party)
+
+if (${CCL_BUILD_TESTS})
+    add_subdirectory(tests)
+endif()
