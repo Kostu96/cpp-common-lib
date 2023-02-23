@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2022 Konstanty Misiak
+# Copyright (C) 2022-2023 Konstanty Misiak
 #
 # SPDX-License-Identifier: MIT
 #
@@ -45,18 +45,19 @@ set(SOURCE_FILES
     ${CMAKE_CURRENT_SOURCE_DIR}/include/ccl/helper_functions.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/ccl/md5.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/ccl/non_copyable.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/ccl/types.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/source/helper_functions.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/source/md5.cpp
 )
 
 add_library(${LIB_TARGET_NAME} STATIC
-	${SOURCE_FILES}
+    ${SOURCE_FILES}
 )
 
 source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR} FILES ${SOURCE_FILES})
 
 target_include_directories(${LIB_TARGET_NAME} SYSTEM PUBLIC
-	${CMAKE_CURRENT_SOURCE_DIR}/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
 add_subdirectory(third_party)
